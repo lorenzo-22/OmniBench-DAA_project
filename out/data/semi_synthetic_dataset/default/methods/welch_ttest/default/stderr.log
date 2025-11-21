@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/lorenzo/project/.snakemake/repos/e6530c1debdee38ce9cafc3fe4ebf747194b76a194fc2c24d0754b6ceb4023da/entrypoint_welch_ttest.py", line 96, in <module>
+    main()
+  File "/home/lorenzo/project/.snakemake/repos/e6530c1debdee38ce9cafc3fe4ebf747194b76a194fc2c24d0754b6ceb4023da/entrypoint_welch_ttest.py", line 68, in main
+    g1_vals = row[group1_cols].dropna().values
+              ~~~^^^^^^^^^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/series.py", line 1165, in __getitem__
+    return self._get_with(key)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/series.py", line 1206, in _get_with
+    return self.loc[key]
+           ~~~~~~~~^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/indexing.py", line 1421, in _getitem_axis
+    return self._getitem_iterable(key, axis=axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/indexing.py", line 1361, in _getitem_iterable
+    keyarr, indexer = self._get_listlike_indexer(key, axis)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/indexing.py", line 1559, in _get_listlike_indexer
+    keyarr, indexer = ax._get_indexer_strict(key, axis_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/lorenzo/project/.snakemake/conda/4dc1b11a8b535aba5b2d652479113630_/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6261, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['R', 'S', 'T'], dtype='object')] are in the [index]"

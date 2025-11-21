@@ -1,0 +1,56 @@
+---
+## Benchmark ID
+id: daa_benchmark
+
+## Description
+description: "Differential Abundance Analysis Benchmark"
+
+## Version
+version: 1.0
+
+## Contact
+benchmarker: "Lorenzo, lorenzofavaro.soa@gmail.com"
+
+## Storage
+storage_api: S3
+storage: https://s3.example.com
+
+## Schema version
+benchmark_yaml_spec: 0.01
+
+## Software backend
+software_backend: conda
+
+## Software environments
+software_environments:
+  python:
+    description: "Python with pandas, scipy, statsmodels"
+    conda: envs/welch_ttest.yml
+
+## Benchmark stages
+stages:
+  - id: data
+    modules:
+      - id: semi_synthetic_dataset
+        name: "Semi-synthetic dataset"
+        software_environment: "python"
+        repository:
+          url: file:///home/lorenzo/project/datasets/semi-synthetic_dataset
+          commit: 0d05d6d
+    outputs:
+      - id: data.matrix
+        path: "{dataset}.xlsx"
+
+  - id: methods
+    modules:
+      - id: welch_ttest
+        name: "Welch T-Test"
+        software_environment: "python"
+        repository:
+          url: file:///home/lorenzo/project/methods/welch_t-test
+          commit: HEAD
+    inputs:
+      - entries: data.matrix
+    outputs:
+      - id: methods.results
+        path: "{dataset}_results.csv"

@@ -1,0 +1,12 @@
+cd /home/lorenzo/project/methods/welch_t-test && git init && git add -A && git commit -m "Initial Welch t-test method module"name: welch_ttest
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pandas
+  - scipy
+  - statsmodels
+  - openpyxl
+  - numpy

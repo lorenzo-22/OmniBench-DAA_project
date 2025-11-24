@@ -1,0 +1,13 @@
+# Simulate proteomics data
+np.random.seed(42)
+proteins_n, nA, nB = 2000, 6, 6
+mu, sigma = 20, 0.5
+A = np.random.normal(mu, sigma, size=(proteins_n, nA))
+B = np.random.normal(mu, sigma, size=(proteins_n, nB))
+B[:200] += 1.0   # inject +1 log2 effect in first 200 proteins
+true_labels = np.zeros(proteins_n); true_labels[:200] = 1
+
+counts = np.hstack([A, B])
+samples = [f"A{i}" for i in range(nA)] + [f"B{i}" for i in range(nB)]
+proteins = [f"Prot{i}" for i in range(proteins_n)]
+df = pd.DataFrame(counts, index=proteins, columns=samples)

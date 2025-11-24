@@ -10,7 +10,22 @@ conda create --name myenv r-base=4.3
 ```bash
 conda activate myenv r-base=4.3
 ``` 
-```python
-Rscript limma_method.r
+The following packages should be installed to run the script:
+- "BiocManager"
+- "limma"
+- "dplyr"
+- "tibble"
+- "optparse"
+
+## Running the analysis
+The script takes as inputs:
+- The protein abundance matrix (nrows = protein; ncols = samples)
+- A dataframe containing for each sample ID, its assigned group label: Tumor (T) or Normal (N)
+- A dataframe containing for each gene name (hugo name), the corresponding protein database ID (ENSEMBL Protein ID)
+The script can be run as follows:
+
+```R
+Rscript limma_method.r -d <path_to_dataset> -l <path_to_group_label_df> -m <path_to_gene_proteinIDs_df> 
 ``` 
+The output is a limma data table containing for each protein, its corresponding gene name, the effect size value and the p.value computed by the limma analysis. The data table is automatically saved as .csv in this folder.
 

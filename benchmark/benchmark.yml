@@ -52,7 +52,7 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/lorenzo-22/OmniBench-DAA_project"
-          commit: bcd9362
+          commit: e1b39c5
     inputs:
       - entries: output
     outputs:

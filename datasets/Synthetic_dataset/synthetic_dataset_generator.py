@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import pandas as pd
+import argparse
 
 def generate_data():
     """Simulates proteomics data with a signal in the first 200 proteins."""
@@ -36,6 +37,13 @@ def generate_data():
     return df
 
 if __name__ == "__main__":
+    # Setup Argument Parser
+    parser = argparse.ArgumentParser(description="Generate synthetic proteomics data")
+    parser.add_argument("--output", type=str, default="simulated_proteomics_data.csv", 
+                        help="Path to save the output CSV file")
+    
+    args = parser.parse_args()
+
     # Generate the dataframe
     df = generate_data()
     
@@ -45,7 +53,6 @@ if __name__ == "__main__":
     print("\nFirst 5 rows:")
     print(df.head())
     
-    # Save to CSV
-    output_filename = "simulated_proteomics_data.csv"
-    df.to_csv(output_filename)
-    print(f"\nSaved full dataset to '{output_filename}'")
+    # Save to CSV using the argument path
+    df.to_csv(args.output)
+    print(f"\nSaved full dataset to '{args.output}'")

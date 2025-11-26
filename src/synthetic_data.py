@@ -37,15 +37,24 @@ def generate_data():
     return df
 
 if __name__ == "__main__":
-    # Setup Argument Parser
+    # Setup Argument Parser for OmniBenchmark
     parser = argparse.ArgumentParser(description="Generate synthetic proteomics data")
-    parser.add_argument("--output", type=str, default="simulated_proteomics_data.csv", 
-                        help="Path to save the output CSV file")
+    parser.add_argument("--output_dir", type=str, required=True,
+                        help="Output directory")
+    parser.add_argument("--name", type=str, required=True,
+                        help="Dataset name")
     
     args = parser.parse_args()
 
     # Generate the dataframe
     df = generate_data()
+    
+    # Create output directory if needed
+    import os
+    os.makedirs(args.output_dir, exist_ok=True)
+    
+    # Construct output file path
+    output_file = os.path.join(args.output_dir, f"{args.name}.synthetic_dataset.csv")
     
     # Print summary to console
     print(f"\nData Generated Successfully!")
@@ -54,5 +63,5 @@ if __name__ == "__main__":
     print(df.head())
     
     # Save to CSV using the argument path
-    df.to_csv(args.output)
-    print(f"\nSaved full dataset to '{args.output}'")
+    df.to_csv(output_file)
+    print(f"\nSaved full dataset to '{output_file}'")

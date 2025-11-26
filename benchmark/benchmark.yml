@@ -26,6 +26,9 @@ software_environments:
   python:
     description: "data generation env"
     conda: envs/data_generation.yml
+  r_limma:
+    description: "R environment with limma"
+    conda: envs/limma.yml
 
 stages:
   ## Datasets
@@ -42,3 +45,16 @@ stages:
         path: "data/synthetic_dataset.csv"
 
 ## Methods
+  - id: methods
+    modules:
+      - id: limma
+        name: 'limma_method'
+        software_environment: "r_limma"
+        repository:
+          url: "https://github.com/lorenzo-22/OmniBench-DAA_project"
+          commit: bcd9362
+    inputs:
+      - entries: output
+    outputs:
+      - id: results
+        path: "limma_results.csv"

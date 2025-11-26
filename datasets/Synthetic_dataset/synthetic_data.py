@@ -21,7 +21,7 @@ def generate_data():
     B[:200] += 1.0
     
     # 4. Create label tracker (optional, but good for validation)
-    true_labels = np.zeros(proteins_n)
+    true_labels = np.zeros(proteins_n, dtype=int)
     true_labels[:200] = 1
     
     # 5. formatting into DataFrame

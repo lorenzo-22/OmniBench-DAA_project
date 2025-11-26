@@ -51,8 +51,8 @@ stages:
         name: 'limma_method'
         software_environment: "r_limma"
         repository:
-          url: "https://github.com/lorenzo-22/OmniBench-DAA_project"
-          commit: e1b39c5
+          url: "https://github.com/lorenzo-22/limma_R-script"
+          commit: de668b5
     inputs:
       - entries: output
     outputs:

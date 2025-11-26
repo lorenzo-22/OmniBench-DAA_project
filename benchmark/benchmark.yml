@@ -37,8 +37,8 @@ stages:
         repository:
           url: "https://github.com/lorenzo-22/OmniBench-DAA_project/dataset/Synthetic_dataset"
           commit: "main" 
-        outputs:
-          - id: output
-            path: "data/synthetic_dataset.csv"
+    outputs:
+      - id: output
+        path: "data/synthetic_dataset.csv"
 
 ## Methods

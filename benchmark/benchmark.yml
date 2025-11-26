@@ -13,7 +13,7 @@ benchmarker: "Lorenzo, lorenzofavaro.soa@gmail.com"
 
 ## Storage
 storage_api: S3
-storage: https://s3.example.com
+storage: out
 
 ## Schema version
 benchmark_yaml_spec: 0.01

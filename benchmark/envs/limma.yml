@@ -1,0 +1,13 @@
+name: limma
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - conda-forge::r-base=4.3
+  - conda-forge::pip
+  - conda-forge::r-biocmanager
+  - conda-forge::r-limma
+  - conda-forge::r-dplyr
+  - conda-forge::r-tibble
+  - conda-forge::r-optparse
+  - pip:

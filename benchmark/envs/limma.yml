@@ -2,11 +2,13 @@ name: limma
 channels:
   - conda-forge
   - nodefaults
+  - bioconda
 dependencies:
+  - conda-forge::python=3.12.6
   - conda-forge::r-base=4.3
   - conda-forge::pip
   - conda-forge::r-biocmanager
-  - conda-forge::r-limma
+  - bioconductor-limma
   - conda-forge::r-dplyr
   - conda-forge::r-tibble
   - conda-forge::r-optparse

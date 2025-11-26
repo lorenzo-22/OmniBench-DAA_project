@@ -29,17 +29,16 @@ software_environments:
 
 stages:
   ## Datasets
- - id: data
-  modules:
-    - id: s1
-      name: 'synthetic_data'
-      software_environment: "python"
-      command: "python generate_proteomics.py --output ${data.matrix}" 
-      repository:
-        url: "https://github.com/lorenzo-22/OmniBench-DAA_project"
-        commit: "main"
-  outputs:
-    - id: data.matrix
-      path: "data/synthetic_dataset.csv"
+  - id: data
+    modules:
+      - id: s1
+        name: 'synthetic_data'
+        software_environment: "python"
+        repository:
+          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/dataset/Synthetic_dataset"
+          commit: "main" 
+        outputs:
+          - id: output
+            path: "data/synthetic_dataset.csv"
 
 ## Methods

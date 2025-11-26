@@ -36,7 +36,7 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/OmniBench-DAA_project"
-          commit: "main"
+          commit: bcd9362
     outputs:
       - id: output
         path: "data/synthetic_dataset.csv"

@@ -1,0 +1,9 @@
+name: data_generation
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pandas
+  - numpy
+  - scipy

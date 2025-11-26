@@ -11,21 +11,28 @@ library(optparse)
 option_list <- list(
   make_option("--output_dir", type="character", help="Output directory"),
   make_option("--name", type="character", help="Dataset name"),
-  make_option("--data.matrix", type="character", dest="data_matrix", help="Input data file")
+  make_option("--data.matrix", type="character", help="Input data file")
 )
 
 parser <- OptionParser(option_list=option_list)
 args <- parse_args(parser)
 
+# Debug: print all arguments
 cat("Running limma analysis\n")
-cat("Input:", args$data_matrix, "\n")
+cat("All arguments:\n")
+print(args)
+cat("\n")
+
+# Access data.matrix with the exact name (including dot)
+data_matrix_file <- args$`data.matrix`
+cat("Input file:", data_matrix_file, "\n")
 cat("Output dir:", args$output_dir, "\n")
 
 # Create output directory
 dir.create(args$output_dir, showWarnings=FALSE, recursive=TRUE)
 
 # Read data
-data <- read.csv(args$data_matrix, row.names=1)
+data <- read.csv(data_matrix_file, row.names=1)
 
 # Remove label column if present
 if ("is_differentially_expressed" %in% colnames(data)) {

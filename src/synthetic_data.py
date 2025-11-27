@@ -53,8 +53,9 @@ if __name__ == "__main__":
     import os
     os.makedirs(args.output_dir, exist_ok=True)
     
-    # Construct output file path
+    # Construct output file paths
     output_file = os.path.join(args.output_dir, f"{args.name}.synthetic_dataset.csv")
+    labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels.csv")
     
     # Print summary to console
     print(f"\nData Generated Successfully!")
@@ -62,6 +63,12 @@ if __name__ == "__main__":
     print("\nFirst 5 rows:")
     print(df.head())
     
-    # Save to CSV using the argument path
-    df.to_csv(output_file)
-    print(f"\nSaved full dataset to '{output_file}'")
+    # Save main dataset to CSV (without labels column)
+    df_data = df.drop(columns=['is_differentially_expressed'])
+    df_data.to_csv(output_file)
+    print(f"\nSaved dataset to '{output_file}'")
+    
+    # Save labels separately
+    labels_df = df[['is_differentially_expressed']]
+    labels_df.to_csv(labels_file)
+    print(f"Saved true labels to '{labels_file}'")

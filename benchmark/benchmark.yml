@@ -38,8 +38,8 @@ stages:
         name: 'synthetic_data'
         software_environment: "python"
         repository:
-          url: "https://github.com/lorenzo-22/OmniBench-DAA_project"
-          commit: 3c1803f
+          url: "https://github.com/lorenzo-22/synthetic_dataset"
+          commit: 90f4a27
     outputs:
       - id: data.matrix
         path: "{dataset}.synthetic_dataset.csv"
@@ -54,7 +54,7 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/lorenzo-22/limma_R-script"
-          commit: 36f8f11
+          commit: 133e49c
     inputs:
       - entries:
           - data.matrix

@@ -42,7 +42,13 @@ stages:
           commit: bcd9362
     outputs:
       - id: data.matrix
+<<<<<<< Updated upstream
         path: "data/synthetic_dataset.csv"
+=======
+        path: "{dataset}.synthetic_dataset.csv"
+      - id: data.true_labels
+        path: "{dataset}.true_labels.csv"
+>>>>>>> Stashed changes
 
 ## Methods
   - id: methods

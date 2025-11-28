@@ -55,9 +55,7 @@ stages:
       - id: limma
         name: 'limma_method'
         software_environment: "r_limma"
-        repository:
-          url: "https://github.com/lorenzo-22/limma_R-script"
-          commit: 133e49c
+        path: "limma" # Added this instead of repo as we now have the tools within this repo (Josefine, commit #)
       - id: welch
         name: "welch_ttest"
         software_environment: "welch"

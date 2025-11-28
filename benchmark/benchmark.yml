@@ -32,6 +32,9 @@ software_environments:
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
+  python_metrics:
+    description: "Python environment for metrics calculation"
+    conda: envs/metrics.yml
 
 stages:
   ## Datasets

@@ -60,7 +60,7 @@ stages:
           commit: 50cdbc1      
       - id: welch
         name: "welch_ttest"
-        software_environment: "welch"
+        software_environment: "python_basic"
         repository:
           url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/welch"
           commit: 50cdbc1

@@ -8,6 +8,9 @@ description: "Differential Abundance Analysis Benchmark"
 ## Version
 version: 1.0
 
+## 
+methods_dir: "methods" # added this for Omnibenchmark to know where to look for methods within repo 
+
 ## Contact
 benchmarker: "Lorenzo, lorenzofavaro.soa@gmail.com"
 
@@ -55,9 +58,15 @@ stages:
         repository:
           url: "https://github.com/lorenzo-22/limma_R-script"
           commit: 133e49c
+      - id: welch
+        name: "welch_ttest"
+        software_environment: "welch"
+        path: "welch" 
+
     inputs:
       - entries:
           - data.matrix
     outputs:
       - id: results
         path: "{dataset}_limma_results.csv"
+    

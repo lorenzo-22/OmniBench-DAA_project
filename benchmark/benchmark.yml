@@ -26,8 +26,11 @@ software_backend: conda
 
 ## Software environments
 software_environments:
-  python:
+  python_data_generation:
     description: "data generation env"
+    conda: envs/data_generation.yml
+  python_basic:
+    description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
     conda: envs/data_generation.yml
   r_limma:
     description: "R environment with limma"
@@ -49,22 +52,24 @@ stages:
       - id: data.true_labels
         path: "{dataset}.true_labels.csv"
 
-## Methods
+  ## Methods
   - id: methods
     modules:
       - id: limma
         name: 'limma_method'
         software_environment: "r_limma"
-        path: "limma" # Added this instead of repo as we now have the tools within this repo (Josefine, commit #)
+        repository:
+          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/limma"
+          commit: e0825c1d9d0505f9588b75028a245352878b4e37      
       - id: welch
         name: "welch_ttest"
         software_environment: "welch"
-        path: "welch" 
-
+        repository:
+          url: ""
+          commit: 1b86ebb74ec8d992e1183aef3d61b9dc430d52eb
     inputs:
       - entries:
           - data.matrix
     outputs:
       - id: results
         path: "{dataset}_limma_results.csv"
-    

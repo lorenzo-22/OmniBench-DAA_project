@@ -26,6 +26,9 @@ software_environments:
   python:
     description: "data generation env"
     conda: envs/data_generation.yml
+  python_basic:
+    description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
+    conda: envs/python_basic.yml
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
@@ -46,18 +49,26 @@ stages:
       - id: data.true_labels
         path: "{dataset}.true_labels.csv"
 
-## Methods
+  ## Methods
   - id: methods
     modules:
       - id: limma
         name: 'limma_method'
         software_environment: "r_limma"
         repository:
-          url: "https://github.com/lorenzo-22/limma_R-script"
-          commit: 133e49c
+          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/limma"
+          commit: 50cdbc1      
+      - id: welch
+        name: "welch_ttest"
+        software_environment: "python_basic"
+        repository:
+          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/welch"
+          commit: 50cdbc1
     inputs:
       - entries:
           - data.matrix
     outputs:
       - id: results
         path: "{dataset}_limma_results.csv"
+      - id: welch_results
+        path: "{dataset}_welch_results.csv"

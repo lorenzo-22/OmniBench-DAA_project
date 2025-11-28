@@ -8,9 +8,6 @@ description: "Differential Abundance Analysis Benchmark"
 ## Version
 version: 1.0
 
-## 
-methods_dir: "methods" # added this for Omnibenchmark to know where to look for methods within repo 
-
 ## Contact
 benchmarker: "Lorenzo, lorenzofavaro.soa@gmail.com"
 
@@ -60,13 +57,13 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/limma"
-          commit: e0825c1d9d0505f9588b75028a245352878b4e37      
+          commit: 50cdbc1      
       - id: welch
         name: "welch_ttest"
         software_environment: "welch"
         repository:
-          url: ""
-          commit: 1b86ebb74ec8d992e1183aef3d61b9dc430d52eb
+          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/welch"
+          commit: 50cdbc1
     inputs:
       - entries:
           - data.matrix

@@ -23,7 +23,7 @@ software_backend: conda
 
 ## Software environments
 software_environments:
-  python_data_generation:
+  python:
     description: "data generation env"
     conda: envs/data_generation.yml
   python_basic:

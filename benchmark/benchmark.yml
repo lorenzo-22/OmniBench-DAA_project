@@ -28,7 +28,7 @@ software_environments:
     conda: envs/data_generation.yml
   python_basic:
     description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
-    conda: envs/data_generation.yml
+    conda: envs/python_basic.yml
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
@@ -70,3 +70,5 @@ stages:
     outputs:
       - id: results
         path: "{dataset}_limma_results.csv"
+      - id: welch_results
+        path: "{dataset}_welch_results.csv"

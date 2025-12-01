@@ -32,6 +32,9 @@ software_environments:
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
+  python_inter_tool_metrics:
+    description: "python_inter_tool_metrics"
+    conda: envs/metrics.yml
 
 stages:
   ## Datasets
@@ -74,7 +77,7 @@ stages:
 
   - id: metrics
     modules:
-      - id: inter_tool_metrics
+      - id: python_inter_tool_metrics
         name: "Metrics comparing the outcomes of the tools tested"
         software_environment: "inter_tool_metrics"
         repository:

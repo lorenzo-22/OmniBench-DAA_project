@@ -81,13 +81,11 @@ stages:
         name: "Metrics comparing the outcomes of the tools tested"
         software_environment: "inter_tool_metrics"
         repository:
-          url: https://github.com/lorenzo-22/inter_metrics
+          url: "https://github.com/lorenzo-22/inter_metrics"
           commit: 9529179
-        parameters:
-          # - values: 
     inputs:
       - entries:
           - results
     outputs:
       - id: inter_tool_metrics.scores
-        path: ""
+        path: "results"

@@ -12,7 +12,7 @@ option_list <- list(
   make_option("--output_dir", type="character", help="Output directory"),
   make_option("--name", type="character", help="Dataset name"),
   make_option("--data.matrix", type="character", help="Input data file")
-  make_option("--data.true_labels", type="character", help="True labels")
+  make_option("--data.true_sample_labels", type="character", help="True labels")
 )
 
 parser <- OptionParser(option_list=option_list)

@@ -45,7 +45,7 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 5d8229adbdb6e6e3c4686518eac462cae0c8151b #NB! non-mmerged pull req 
+          commit: 9b72968 #NB! non-mmerged pull req 
     outputs:
       - id: data.matrix
         path: "{dataset}.synthetic_dataset.csv"

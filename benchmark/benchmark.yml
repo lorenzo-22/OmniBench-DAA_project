@@ -73,7 +73,7 @@ stages:
           - data.true_labels
     outputs:
       - id: results
-        path: "results/{dataset}_{module}"
+        path: "results/{dataset}_{method}"
 
 
   - id: metrics

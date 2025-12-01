@@ -6,6 +6,6 @@ dependencies:
   - conda-forge::python=3.13.5
   - conda-forge::pip
   - pip:
-    - scipy=1.16
-    - numpy=2.3
-    - pandas=2.3
+    - scipy==1.16
+    - numpy==2.3
+    - pandas==2.3

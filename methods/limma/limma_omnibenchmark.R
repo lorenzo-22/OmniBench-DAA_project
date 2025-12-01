@@ -6,29 +6,16 @@
 library(limma)
 library(dplyr)
 library(optparse)
-library(argparse)
 
 # Parse OmniBenchmark arguments
-# option_list <- list(
-#   make_option("--output_dir", type="character", help="Output directory"),
-#   make_option("--name", type="character", help="Dataset name"),
-#   make_option("--data.matrix", type="character", help="Input data file")
-#   make_option("--method", "-m", dest="method", type="character", help="method")
-# )
+option_list <- list(
+  make_option("--output_dir", type="character", help="Output directory"),
+  make_option("--name", type="character", help="Dataset name"),
+  make_option("--data.matrix", type="character", help="Input data file")
+)
 
-# parser <- OptionParser(option_list=option_list)
-# args <- parse_args(parser)
-
-parser <- ArgumentParser(description="Limma OmniBenchmark wrapper")
-
-parser$add_argument('--data.matrix', type="character", help='Input data matrix file')
-parser$add_argument('--data.true_labels', type="character", help='True labels file')
-# parser$add_argument('--seed', type="integer", default=819797, help='Random seed')
-parser$add_argument("--output_dir", "-o", type="character", help="Output directory", default=getwd())
-# parser$add_argument("--name", "-n", type="character", help="Dataset name")
-# parser$add_argument("--method", "-m", type="character", help="Method ID")
-
-args <- parser$parse_args()
+parser <- OptionParser(option_list=option_list)
+args <- parse_args(parser)
 
 # Debug: print all arguments
 cat("Running limma analysis\n")
@@ -85,7 +72,7 @@ output_df <- data.frame(
 )
 
 # Save results
-output_file <- file.path(args$output_dir, "results.csv")
+output_file <- file.path(args$output_dir, paste0(args$name, "_limma_results.csv"))
 write.csv(output_df, output_file, row.names=FALSE)
 
 cat("Results saved to:", output_file, "\n")

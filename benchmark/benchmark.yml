@@ -70,8 +70,24 @@ stages:
     inputs:
       - entries:
           - data.matrix
+          - data.true_labels
     outputs:
       - id: results
-        path: "{dataset}_limma_results.csv"
-      - id: welch_results
-        path: "{dataset}_welch_results.csv"
+        path: "results/{dataset}_{module}_results.csv"
+
+  - id: metrics
+    modules:
+      - id: python_inter_tool_metrics
+        name: "Metrics comparing the outcomes of the tools tested"
+        software_environment: "inter_tool_metrics"
+        repository:
+          url: https://github.com/imallona/clustbench_metrics
+          # commit: 
+        parameters:
+          # - values: 
+    inputs:
+      - entries:
+          - results
+    outputs:
+      - id: inter_tool_metrics.scores
+        path: ""

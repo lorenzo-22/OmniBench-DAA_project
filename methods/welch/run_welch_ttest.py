@@ -23,7 +23,6 @@ import warnings
 def load_dataset(data_file):
     data = (
     pd.read_csv(data_file, index_col=0)
-    .set_index('Name')
     .select_dtypes(include=['number']) # Select only proteomics data
     .T #transform
 )
@@ -84,10 +83,11 @@ def welch_ttest_df(data, labels):
 def main():
     parser = argparse.ArgumentParser(description='Welch t-test benchmark runner')
 
-    parser.add_argument('--data', type=str,
+    parser.add_argument('--data.matrix', type=str,
                         help='csv dataframe with proteins as rows and samples as columns.', required = True)
     parser.add_argument('--output_dir', type=str,
-                        help='output directory to store data files.')
+                        help='output directory to store data files.', 
+                        required=True)
     # parser.add_argument('--name', type=str, help='name of the dataset', default='clustbench')
     # parser.add_argument('--method', type=str,
     #                     help='sklearn method',
@@ -100,7 +100,7 @@ def main():
         sys.exit(0)
 
     print('Loading data')
-    data = load_dataset(getattr(args, 'data'))
+    data = load_dataset(getattr(args, 'data.matrix'))
     labels = get_labels(data)
 
     print('Running Welch t-test')

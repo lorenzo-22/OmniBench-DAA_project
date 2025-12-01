@@ -34,7 +34,7 @@ software_environments:
     conda: envs/limma.yml
   python_inter_tool_metrics:
     description: "Python environment for metrics calculation"
-    conda: envs/metrics.yml
+    conda: envs/python_inter_tool_metrics.yml
 
 stages:
   ## Datasets

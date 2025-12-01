@@ -32,7 +32,7 @@ software_environments:
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
-  python_metrics:
+  python_inter_tool_metrics:
     description: "Python environment for metrics calculation"
     conda: envs/metrics.yml
 
@@ -77,9 +77,9 @@ stages:
 
   - id: metrics
     modules:
-      - id: python_inter_tool_metrics
+      - id: inter_tool_metrics
         name: "Metrics comparing the outcomes of the tools tested"
-        software_environment: "inter_tool_metrics"
+        software_environment: "python_inter_tool_metrics"
         repository:
           url: "https://github.com/lorenzo-22/inter_metrics"
           commit: 9529179

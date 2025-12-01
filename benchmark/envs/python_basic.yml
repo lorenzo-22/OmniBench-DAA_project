@@ -9,5 +9,5 @@ dependencies:
     - scipy==1.16
     - numpy==2.3
     - pandas==2.3
-    # - pydantic
-    # - pydantic-core
+    - pydantic
+    - pydantic-core

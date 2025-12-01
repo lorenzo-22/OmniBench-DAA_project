@@ -23,10 +23,10 @@ parser <- ArgumentParser(description="Limma OmniBenchmark wrapper")
 
 parser$add_argument('--data.matrix', type="character", help='Input data matrix file')
 parser$add_argument('--data.true_labels', type="character", help='True labels file')
-parser$add_argument('--seed', type="integer", default=819797, help='Random seed')
+# parser$add_argument('--seed', type="integer", default=819797, help='Random seed')
 parser$add_argument("--output_dir", "-o", type="character", help="Output directory", default=getwd())
-parser$add_argument("--name", "-n", type="character", help="Dataset name")
-parser$add_argument("--method", "-m", type="character", help="Method ID")
+# parser$add_argument("--name", "-n", type="character", help="Dataset name")
+# parser$add_argument("--method", "-m", type="character", help="Method ID")
 
 args <- parser$parse_args()
 

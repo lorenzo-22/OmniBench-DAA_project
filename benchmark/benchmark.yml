@@ -73,7 +73,7 @@ stages:
           - data.true_labels
     outputs:
       - id: results
-        path: "results/{input}{stage}{params}{dataset}_{module}_results.csv"
+        path: "results/{dataset}_{module}"
 
 
   - id: metrics

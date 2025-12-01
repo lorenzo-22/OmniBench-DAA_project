@@ -65,8 +65,8 @@ stages:
         name: "welch_ttest"
         software_environment: "python_basic"
         repository:
-          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/welch"
-          commit: 50cdbc1
+          url: "https://github.com/lorenzo-22/welch_t-test"
+          commit: f98c916
     inputs:
       - entries:
           - data.matrix
@@ -81,8 +81,8 @@ stages:
         name: "Metrics comparing the outcomes of the tools tested"
         software_environment: "inter_tool_metrics"
         repository:
-          url: https://github.com/imallona/clustbench_metrics
-          # commit: 
+          url: https://github.com/lorenzo-22/inter_metrics
+          commit: 9529179
         parameters:
           # - values: 
     inputs:

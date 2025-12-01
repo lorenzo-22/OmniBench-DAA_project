@@ -74,6 +74,10 @@ stages:
     outputs:
       - id: results
         path: "results/{dataset}_{module}_results.csv"
+    log:
+        "logs/{dataset}_{module}.log"
+    benchmark:
+       "benchmarks/{dataset}_{module}.txt"
 
   - id: metrics
     modules:

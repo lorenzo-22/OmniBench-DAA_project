@@ -3,3 +3,4 @@ snakemake.log
 methods/welch/test.ipynb
 test_results
 metrics/inter_tool/concordance_scores.csv
+.DS_store

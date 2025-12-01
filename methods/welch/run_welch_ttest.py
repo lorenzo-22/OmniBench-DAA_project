@@ -30,24 +30,28 @@ def load_dataset(data_file):
         raise ValueError("Invalid data structure: data.matrix must be 2D")
     return data
 
-def get_labels(data):
-    # Make sure there is something in the index
-    if len(data.index) == 0:
-        raise ValueError("Data index is empty.")
-
-    labels = [0 if ".N" in name else 1 for name in data.index]
-
-    # Warn if there are only one class (case or control) in the data.
-    if len(set(labels)) < 2:
-        warnings.warn("Labels contain only one class.", UserWarning)
-    
-    print(f'Found {labels.count(0)} controls and {labels.count(1)} cases in the data.')
-
+def load_labels(labels_file):
+    data = (
+        pd.read_csv(labels_file, index_col=0)
+    )
+    labels = data.iloc[:, 0].to_numpy()
     return labels
 
-import numpy as np
-import pandas as pd
-from scipy.stats import ttest_ind
+# def get_labels(data):
+#     # Make sure there is something in the index
+#     if len(data.index) == 0:
+#         raise ValueError("Data index is empty.")
+
+#     labels = [0 if ".N" in name else 1 for name in data.index]
+
+#     # Warn if there are only one class (case or control) in the data.
+#     if len(set(labels)) < 2:
+#         warnings.warn("Labels contain only one class.", UserWarning)
+    
+#     print(f'Found {labels.count(0)} controls and {labels.count(1)} cases in the data.')
+
+#     return labels
+
 
 def welch_ttest_df(data, labels):
     """
@@ -85,6 +89,8 @@ def main():
 
     parser.add_argument('--data.matrix', type=str,
                         help='csv dataframe with proteins as rows and samples as columns.', required = True)
+    parser.add_argument('--data.true_labels', type=str,
+                        help='csv file with true labels.', required = True)
     parser.add_argument('--output_dir', type=str,
                         help='output directory to store data files.', 
                         required=True)
@@ -101,7 +107,7 @@ def main():
 
     print('Loading data')
     data = load_dataset(getattr(args, 'data.matrix'))
-    labels = get_labels(data)
+    labels = load_labels(getattr(args, 'data.true_labels'))
 
     print('Running Welch t-test')
     results = welch_ttest_df(data, labels)

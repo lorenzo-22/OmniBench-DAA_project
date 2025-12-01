@@ -70,7 +70,7 @@ stages:
     inputs:
       - entries:
           - data.matrix
-          # - data.true_labels
+          - data.true_labels
     outputs:
       - id: results
         path: "{input}/{stage}/{module}/{params}/{dataset}"

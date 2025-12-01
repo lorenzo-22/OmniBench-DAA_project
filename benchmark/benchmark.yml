@@ -32,9 +32,9 @@ software_environments:
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
-  python_metrics:
+  python_inter_tool_metrics:
     description: "Python environment for metrics calculation"
-    conda: envs/metrics.yml
+    conda: envs/python_inter_tool_metrics.yml
 
 stages:
   ## Datasets
@@ -45,7 +45,7 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 90f4a27
+          commit: 9b72968 #NB! non-mmerged pull req 
     outputs:
       - id: data.matrix
         path: "{dataset}.synthetic_dataset.csv"
@@ -59,27 +59,28 @@ stages:
         name: 'limma_method'
         software_environment: "r_limma"
         repository:
-          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/limma"
-          commit: 50cdbc1      
+          url: "https://github.com/JosefineTM/DDA_limma"
+          commit: 3886cbe      
       - id: welch
         name: "welch_ttest"
         software_environment: "python_basic"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
-          commit: f98c916
+          commit: 8014ac2
     inputs:
       - entries:
           - data.matrix
           - data.true_labels
     outputs:
       - id: results
-        path: "results/{dataset}_{module}_results.csv"
+        path: "{input}/{stage}/{module}/{params}/{dataset}"
+
 
   - id: metrics
     modules:
-      - id: python_inter_tool_metrics
+      - id: inter_tool_metrics
         name: "Metrics comparing the outcomes of the tools tested"
-        software_environment: "inter_tool_metrics"
+        software_environment: "python_inter_tool_metrics"
         repository:
           url: "https://github.com/lorenzo-22/inter_metrics"
           commit: 9529179

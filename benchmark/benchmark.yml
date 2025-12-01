@@ -45,7 +45,7 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 5d8229adbdb6e6e3c4686518eac462cae0c8151b
+          commit: 5d8229adbdb6e6e3c4686518eac462cae0c8151b #NB! non-mmerged pull req 
     outputs:
       - id: data.matrix
         path: "{dataset}.synthetic_dataset.csv"
@@ -70,7 +70,7 @@ stages:
     inputs:
       - entries:
           - data.matrix
-          - data.true_labels
+          # - data.true_labels
     outputs:
       - id: results
         path: "{input}/{stage}/{module}/{params}/{dataset}"

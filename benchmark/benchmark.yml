@@ -60,7 +60,7 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/JosefineTM/DDA_limma"
-          commit: d04c9ff      
+          commit: 3886cbe      
       - id: welch
         name: "welch_ttest"
         software_environment: "python_basic"

@@ -59,8 +59,8 @@ stages:
         name: 'limma_method'
         software_environment: "r_limma"
         repository:
-          url: "https://github.com/lorenzo-22/OmniBench-DAA_project/tree/main/methods/limma"
-          commit: 49d8ab9      
+          url: "https://github.com/JosefineTM/DDA_limma"
+          commit: d04c9ff      
       - id: welch
         name: "welch_ttest"
         software_environment: "python_basic"

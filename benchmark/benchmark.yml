@@ -71,7 +71,7 @@ stages:
         software_environment: "python_basic"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
-          commit: a002a46
+          commit: 93e618a
     inputs:
       - entries:
           - data.matrix
@@ -81,24 +81,33 @@ stages:
         path: "{input}/{stage}/{module}/{params}/{dataset}_results.csv"
 
 
-  - id: metrics
+  - id: intra_metrics
     modules:
-#      - id: inter_tool_metrics
-#        name: "Metrics comparing the outcomes of the tools tested"
-#        software_environment: "python_inter_tool_metrics"
-#        repository:
-#          url: "https://github.com/lorenzo-22/inter_metrics"
-#          commit: 9529179
-    - id : intra_tool_metrics
-      name: "intra_metrics"
-      software_environment: "python_intra_tool_metrics" 
-      repository:
-        url: "https://github.com/lorenzo-22/intra_metrics"
-        commit: b959b8a
+      - id : intra_tool_metrics
+        name: "intra_metrics"
+        software_environment: "python_intra_tool_metrics" 
+        repository:
+          url: "https://github.com/lorenzo-22/intra_metrics"
+          commit: b959b8a
     inputs:
       - entries:
           - results
           - data.true_labels_proteins
     outputs:
       - id: inter_tool_metrics.scores
-        path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"
+        path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"  
+  # - id: inter_metrics
+  #   modules:
+  #     - id: inter_tool_metrics
+  #       name: "Metrics comparing the outcomes of the tools tested"
+  #       software_environment: "python_inter_tool_metrics"
+  #       repository:
+  #         url: "https://github.com/lorenzo-22/inter_metrics"
+  #         commit: 9529179
+  #   inputs:
+  #     - entries:
+  #         - results
+  #         - data.true_protein_labels
+  #   outputs:
+  #     - id: inter_tool_metrics.scores
+  #       path: "concordance_scores.csv"

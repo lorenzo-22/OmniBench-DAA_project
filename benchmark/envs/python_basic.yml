@@ -12,3 +12,4 @@ dependencies:
     - pandas==2.3
     - pydantic
     - pydantic-core
+    - pyyaml

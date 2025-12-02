@@ -32,9 +32,12 @@ software_environments:
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
-  python_inter_tool_metrics:
-    description: "Python environment for metrics calculation"
-    conda: envs/python_inter_tool_metrics.yml
+#  python_inter_tool_metrics:
+#    description: "Python environment for metrics calculation"
+#    conda: envs/python_inter_tool_metrics.yml
+  python_intra_tool_metrics:
+    description: "Python environment for intra-tool metrics calculation"
+    conda: envs/python_intra_tool_metrics.yml
 
 stages:
   ## Datasets
@@ -45,24 +48,24 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 9b72968 #NB! non-mmerged pull req 
+          commit: 8e372a2
     outputs:
       - id: data.matrix
-        path: "{dataset}.synthetic_dataset.csv"
+        path: "{input}/{stage}/{module}/{params}/{dataset}.synthetic_dataset.csv"
       - id: data.true_labels
-        path: "{dataset}.true_labels.csv"
-      - id: data.true_protein_labels
-        path: "{dataset}.true_labels_proteins.csv"
+        path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels.csv"
+      - id: data.true_labels_proteins
+        path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels_proteins.csv"
 
   ## Methods
   - id: methods
     modules:
-      # - id: limma
-      #   name: 'limma_method'
-      #   software_environment: "r_limma"
-      #   repository:
-      #     url: "https://github.com/JosefineTM/DDA_limma"
-      #     commit: 3886cbe      
+#      - id: limma
+#        name: 'limma_method'
+#        software_environment: "r_limma"
+#        repository:
+#          url: "https://github.com/JosefineTM/DDA_limma"
+#          commit: 3886cbe      
       - id: welch
         name: "welch_ttest"
         software_environment: "python_basic"
@@ -78,6 +81,21 @@ stages:
         path: "{input}/{stage}/{module}/{params}/{dataset}_results.csv"
 
 
+  - id: intra_metrics
+    modules:
+      - id : intra_tool_metrics
+        name: "intra_metrics"
+        software_environment: "python_intra_tool_metrics" 
+        repository:
+          url: "https://github.com/lorenzo-22/intra_metrics"
+          commit: b959b8a
+    inputs:
+      - entries:
+          - results
+          - data.true_labels_proteins
+    outputs:
+      - id: inter_tool_metrics.scores
+        path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"  
   # - id: inter_metrics
   #   modules:
   #     - id: inter_tool_metrics

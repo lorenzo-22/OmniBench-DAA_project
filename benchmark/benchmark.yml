@@ -92,4 +92,4 @@ stages:
           - data.true_protein_labels
     outputs:
       - id: inter_tool_metrics.scores
-        path: "results"
+        path: "concordance_scores.csv"

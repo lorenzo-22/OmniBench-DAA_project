@@ -51,6 +51,8 @@ stages:
         path: "{dataset}.synthetic_dataset.csv"
       - id: data.true_labels
         path: "{dataset}.true_labels.csv"
+      - id: data.true_protein_labels
+        path: "{dataset}.true_labels_proteins.csv"
 
   ## Methods
   - id: methods
@@ -76,7 +78,7 @@ stages:
         path: "{input}/{stage}/{module}/{params}/{dataset}"
 
 
-  - id: metrics
+  - id: inter_metrics
     modules:
       - id: inter_tool_metrics
         name: "Metrics comparing the outcomes of the tools tested"
@@ -87,6 +89,7 @@ stages:
     inputs:
       - entries:
           - results
+          - data.true_protein_labels
     outputs:
       - id: inter_tool_metrics.scores
         path: "results"

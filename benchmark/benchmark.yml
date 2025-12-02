@@ -75,7 +75,7 @@ stages:
           - data.true_labels
     outputs:
       - id: results
-        path: "{input}/{stage}/{module}/{params}/{dataset}"
+        path: "{input}/{stage}/{module}/{params}/{dataset}_results.csv"
 
 
   - id: inter_metrics

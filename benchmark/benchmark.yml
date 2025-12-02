@@ -68,7 +68,7 @@ stages:
         software_environment: "python_basic"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
-          commit: 9e518b7
+          commit: 93e618a
     inputs:
       - entries:
           - data.matrix

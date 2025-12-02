@@ -51,16 +51,18 @@ stages:
         path: "{dataset}.synthetic_dataset.csv"
       - id: data.true_labels
         path: "{dataset}.true_labels.csv"
+      - id: data.true_protein_labels
+        path: "{dataset}.true_labels_proteins.csv"
 
   ## Methods
   - id: methods
     modules:
-      - id: limma
-        name: 'limma_method'
-        software_environment: "r_limma"
-        repository:
-          url: "https://github.com/JosefineTM/DDA_limma"
-          commit: 3886cbe      
+      # - id: limma
+      #   name: 'limma_method'
+      #   software_environment: "r_limma"
+      #   repository:
+      #     url: "https://github.com/JosefineTM/DDA_limma"
+      #     commit: 3886cbe      
       - id: welch
         name: "welch_ttest"
         software_environment: "python_basic"
@@ -73,20 +75,21 @@ stages:
           - data.true_labels
     outputs:
       - id: results
-        path: "{input}/{stage}/{module}/{params}/{dataset}"
+        path: "{input}/{stage}/{module}/{params}/{dataset}_results.csv"
 
 
-  - id: metrics
-    modules:
-      - id: inter_tool_metrics
-        name: "Metrics comparing the outcomes of the tools tested"
-        software_environment: "python_inter_tool_metrics"
-        repository:
-          url: "https://github.com/lorenzo-22/inter_metrics"
-          commit: 9529179
-    inputs:
-      - entries:
-          - results
-    outputs:
-      - id: inter_tool_metrics.scores
-        path: "results"
+  # - id: inter_metrics
+  #   modules:
+  #     - id: inter_tool_metrics
+  #       name: "Metrics comparing the outcomes of the tools tested"
+  #       software_environment: "python_inter_tool_metrics"
+  #       repository:
+  #         url: "https://github.com/lorenzo-22/inter_metrics"
+  #         commit: 9529179
+  #   inputs:
+  #     - entries:
+  #         - results
+  #         - data.true_protein_labels
+  #   outputs:
+  #     - id: inter_tool_metrics.scores
+  #       path: "concordance_scores.csv"

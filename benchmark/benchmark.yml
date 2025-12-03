@@ -60,12 +60,12 @@ stages:
   ## Methods
   - id: methods
     modules:
-#      - id: limma
-#        name: 'limma_method'
-#        software_environment: "r_limma"
-#        repository:
-#          url: "https://github.com/JosefineTM/DDA_limma"
-#          commit: 3886cbe      
+      - id: limma
+        name: 'limma_method'
+        software_environment: "r_limma"
+        repository:
+          url: "https://github.com/JosefineTM/DDA_limma"
+          commit: 5b36df8    
       - id: welch
         name: "welch_ttest"
         software_environment: "python_basic"

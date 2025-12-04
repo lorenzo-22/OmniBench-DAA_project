@@ -43,21 +43,27 @@ stages:
   ## Datasets
   - id: data
     modules:
-      - id: s1
+      - id: synthetic
         name: 'synthetic_data'
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 0db1a6b
-      - id: s2
+          commit: f092a38
+      - id: semi-synthetic
+        name: 'semi_synthetic_data'
+        software_environment: "python"
+        repository:
+          url: "https://github.com/lorenzo-22/semi-synthetic_dataset"
+          commit: 8bd83b4
+      - id: cancer
         name: 'cancer_data'
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/cancer_dataset"
-          commit: b21bb12
+          commit: e0c7f3d      
     outputs:
       - id: data.matrix
-        path: "{input}/{stage}/{module}/{params}/{dataset}.synthetic_dataset.csv"
+        path: "{input}/{stage}/{module}/{params}/{dataset}.dataset.csv"
       - id: data.true_labels
         path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels.csv"
       - id: data.true_labels_proteins

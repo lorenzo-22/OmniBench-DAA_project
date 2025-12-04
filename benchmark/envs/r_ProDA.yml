@@ -1,8 +1,8 @@
 name: limma
 channels:
+  - bioconda
   - conda-forge
   - nodefaults
-  - bioconda
 dependencies:
   - conda-forge::python=3.12.6
   - conda-forge::r-base=4.3

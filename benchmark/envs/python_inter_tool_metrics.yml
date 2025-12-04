@@ -13,4 +13,4 @@ dependencies:
     - pydantic-core
     - matplotlib==3.10
     - seaborn==0.13
-    - statsmodels==0.14
+    - statsmodels

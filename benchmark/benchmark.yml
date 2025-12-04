@@ -34,7 +34,7 @@ software_environments:
     conda: envs/limma.yml
   r_proda:
     description: "R environment with ProDA"
-    conda: envs/ProDA.yml
+    conda: envs/r_ProDA.yml
   python_inter_tool_metrics:
     description: "Python environment for inter metrics calculation"
     conda: envs/python_inter_tool_metrics.yml

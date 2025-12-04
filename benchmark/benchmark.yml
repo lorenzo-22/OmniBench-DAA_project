@@ -104,10 +104,9 @@ stages:
         repository:
           url: "https://github.com/lorenzo-22/inter_metrics"
           commit: 9529179
-    inputs:
-      - entries:
-          - results
-          - data.true_protein_labels
+    # inputs:
+    #   - entries:
+    #       - results
     outputs:
       - id: inter_tool_metrics.scores
         path: "concordance_scores.csv"

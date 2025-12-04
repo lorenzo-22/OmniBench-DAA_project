@@ -11,3 +11,6 @@ dependencies:
     - pandas==2.3
     - pydantic
     - pydantic-core
+    - matplotlib==3.10
+    - seaborn==0.13
+    - statsmodels==0.14

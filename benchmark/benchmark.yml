@@ -32,9 +32,9 @@ software_environments:
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
-#  python_inter_tool_metrics:
-#    description: "Python environment for metrics calculation"
-#    conda: envs/python_inter_tool_metrics.yml
+  python_inter_tool_metrics:
+    description: "Python environment for inter metrics calculation"
+    conda: envs/python_inter_tool_metrics.yml
   python_intra_tool_metrics:
     description: "Python environment for intra-tool metrics calculation"
     conda: envs/python_intra_tool_metrics.yml

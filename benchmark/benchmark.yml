@@ -103,7 +103,7 @@ stages:
         software_environment: "python_inter_tool_metrics"
         repository:
           url: "https://github.com/lorenzo-22/inter_metrics"
-          commit: 9529179
+          commit: 759a341
     # inputs:
     #   - entries:
     #       - results

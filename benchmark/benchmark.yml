@@ -26,9 +26,9 @@ software_environments:
   python:
     description: "data generation env"
     conda: envs/data_generation.yml
-  python_basic:
+  python_welch:
     description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
-    conda: envs/python_basic.yml
+    conda: envs/python_welch.yml
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
@@ -68,7 +68,7 @@ stages:
           commit: 5b36df8    
       - id: welch
         name: "welch_ttest"
-        software_environment: "python_basic"
+        software_environment: "python_welch"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
           commit: 4f895ba
@@ -96,18 +96,18 @@ stages:
     outputs:
       - id: inter_tool_metrics.scores
         path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"  
-  # - id: inter_metrics
-  #   modules:
-  #     - id: inter_tool_metrics
-  #       name: "Metrics comparing the outcomes of the tools tested"
-  #       software_environment: "python_inter_tool_metrics"
-  #       repository:
-  #         url: "https://github.com/lorenzo-22/inter_metrics"
-  #         commit: 9529179
-  #   inputs:
-  #     - entries:
-  #         - results
-  #         - data.true_protein_labels
-  #   outputs:
-  #     - id: inter_tool_metrics.scores
-  #       path: "concordance_scores.csv"
+  - id: inter_metrics
+    modules:
+      - id: inter_tool_metrics
+        name: "Metrics comparing the outcomes of the tools tested"
+        software_environment: "python_inter_tool_metrics"
+        repository:
+          url: "https://github.com/lorenzo-22/inter_metrics"
+          commit: 9529179
+    inputs:
+      - entries:
+          - results
+          - data.true_protein_labels
+    outputs:
+      - id: inter_tool_metrics.scores
+        path: "concordance_scores.csv"

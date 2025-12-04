@@ -80,7 +80,7 @@ stages:
         software_environment: "r_proda"
         repository:
           url: "https://github.com/JosefineTM/DDA_ProDA.git"
-          commit: fd08e10
+          commit: e4d4ada
     inputs:
       - entries:
           - data.matrix

@@ -51,7 +51,7 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: f092a38
+          commit: 3623f8f
     #  - id: semi-synthetic
     #    name: 'semi_synthetic_data'
     #    software_environment: "python"
@@ -107,8 +107,8 @@ stages:
         name: "intra_metrics"
         software_environment: "python_intra_tool_metrics" 
         repository:
-          url: "https://github.com/mlykkegaard/intra_metrics"
-          commit: c4c6d5d
+          url: "https://github.com/lorenzo-22/intra_metrics"
+          commit: ac368a0
     inputs:
       - entries:
           - results

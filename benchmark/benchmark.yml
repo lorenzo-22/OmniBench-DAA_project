@@ -26,15 +26,18 @@ software_environments:
   python:
     description: "data generation env"
     conda: envs/data_generation.yml
-  python_basic:
+  python_welch:
     description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
-    conda: envs/python_basic.yml
+    conda: envs/python_welch.yml
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
-#  python_inter_tool_metrics:
-#    description: "Python environment for metrics calculation"
-#    conda: envs/python_inter_tool_metrics.yml
+  r_proda:
+    description: "R environment with ProDA"
+    conda: envs/r_ProDA.yml
+  python_inter_tool_metrics:
+    description: "Python environment for inter metrics calculation"
+    conda: envs/python_inter_tool_metrics.yml
   python_intra_tool_metrics:
     description: "Python environment for intra-tool metrics calculation"
     conda: envs/python_intra_tool_metrics.yml
@@ -79,10 +82,16 @@ stages:
           commit:  423f115  
       - id: welch
         name: "welch_ttest"
-        software_environment: "python_basic"
+        software_environment: "python_welch"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
           commit: 4f895ba
+      - id: proda
+        name: "ProDA"
+        software_environment: "r_proda"
+        repository:
+          url: "https://github.com/JosefineTM/DDA_ProDA.git"
+          commit: e4d4ada
     inputs:
       - entries:
           - data.matrix
@@ -114,11 +123,10 @@ stages:
   #       software_environment: "python_inter_tool_metrics"
   #       repository:
   #         url: "https://github.com/lorenzo-22/inter_metrics"
-  #         commit: 9529179
-  #   inputs:
-  #     - entries:
-  #         - results
-  #         - data.true_protein_labels
+  #         commit: 759a341
+  #   # inputs:
+  #   #   - entries:
+  #   #       - results
   #   outputs:
   #     - id: inter_tool_metrics.scores
   #       path: "concordance_scores.csv"

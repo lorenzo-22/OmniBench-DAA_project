@@ -1,0 +1,14 @@
+name: limma
+channels:
+  - bioconda
+  - conda-forge
+  - nodefaults
+dependencies:
+  - conda-forge::python=3.12.6
+  - conda-forge::r-base=4.3
+  - conda-forge::pip
+  - conda-forge::r-biocmanager
+  - bioconductor-proDA
+  - conda-forge::r-dplyr
+  - conda-forge::r-optparse
+  - pip:

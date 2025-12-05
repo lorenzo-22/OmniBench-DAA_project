@@ -26,9 +26,9 @@ software_environments:
   python:
     description: "data generation env"
     conda: envs/data_generation.yml
-  python_basic:
+  python_welch:
     description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
-    conda: envs/python_basic.yml
+    conda: envs/python_welch.yml
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml

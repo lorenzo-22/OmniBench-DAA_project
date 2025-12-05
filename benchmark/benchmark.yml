@@ -39,6 +39,19 @@ software_environments:
     description: "Python environment for intra-tool metrics calculation"
     conda: envs/python_intra_tool_metrics.yml
 
+# metric_collectors:
+#   - id: plotting
+#     name: "Single-backend metric collector."
+#     software_environment: "fcps"
+#     repository:
+#       url: https://github.com/imallona/clustering_report
+#       commit: bbb9d56
+#     inputs:
+#       - metrics.scores
+#     outputs:
+#       - id: plotting.html
+#         path: "{input}/{name}/plotting_report.html"
+
 stages:
   ## Datasets
   - id: data

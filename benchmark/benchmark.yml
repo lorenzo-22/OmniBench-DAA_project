@@ -79,7 +79,7 @@ stages:
           commit:  423f115  
       - id: welch
         name: "welch_ttest"
-        software_environment: "python_basic"
+        software_environment: "python_welch"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
           commit: 4f895ba

@@ -99,7 +99,7 @@ stages:
         software_environment: "python_intra_tool_metrics" 
         repository:
           url: "https://github.com/lorenzo-22/intra_metrics"
-          commit: b959b8a
+          commit: 83bd59f
     inputs:
       - entries:
           - results

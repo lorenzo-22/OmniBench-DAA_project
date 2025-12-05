@@ -26,15 +26,15 @@ software_environments:
   python:
     description: "data generation env"
     conda: envs/data_generation.yml
-  python_welch:
+  python_basic:
     description: "Basic python env for simple methods and tools. Includes basis libs such as scipy and numpy"
-    conda: envs/python_welch.yml
+    conda: envs/python_basic.yml
   r_limma:
     description: "R environment with limma"
     conda: envs/limma.yml
-  python_inter_tool_metrics:
-    description: "Python environment for inter metrics calculation"
-    conda: envs/python_inter_tool_metrics.yml
+#  python_inter_tool_metrics:
+#    description: "Python environment for metrics calculation"
+#    conda: envs/python_inter_tool_metrics.yml
   python_intra_tool_metrics:
     description: "Python environment for intra-tool metrics calculation"
     conda: envs/python_intra_tool_metrics.yml
@@ -43,20 +43,31 @@ stages:
   ## Datasets
   - id: data
     modules:
-      - id: s1
+      - id: synthetic
         name: 'synthetic_data'
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 0db1a6b
+          commit: f092a38
+      - id: semi-synthetic
+        name: 'semi_synthetic_data'
+        software_environment: "python"
+        repository:
+          url: "https://github.com/lorenzo-22/semi-synthetic_dataset"
+          commit: 8bd83b4
+      - id: cancer
+        name: 'cancer_data'
+        software_environment: "python"
+        repository:
+          url: "https://github.com/lorenzo-22/cancer_dataset"
+          commit: e0c7f3d      
     outputs:
       - id: data.matrix
-        path: "{input}/{stage}/{module}/{params}/{dataset}.synthetic_dataset.csv"
+        path: "{input}/{stage}/{module}/{params}/{dataset}.dataset.csv"
       - id: data.true_labels
         path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels.csv"
       - id: data.true_labels_proteins
         path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels_proteins.csv"
-
   ## Methods
   - id: methods
     modules:
@@ -65,10 +76,10 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/JosefineTM/DDA_limma"
-          commit: 5b36df8    
+          commit:  423f115  
       - id: welch
         name: "welch_ttest"
-        software_environment: "python_welch"
+        software_environment: "python_basic"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
           commit: 4f895ba
@@ -96,7 +107,6 @@ stages:
     outputs:
       - id: inter_tool_metrics.scores
         path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"  
-
   - id: inter_metrics
     modules:
       - id: inter_tool_metrics

@@ -42,7 +42,7 @@ software_environments:
     conda: envs/python_intra_tool_metrics.yml
 
 metric_collectors:
-  - id: inter_metrics
+  - id: inter_tool_metrics
     name: "Metrics comparing data with no ground truth to one another"
     software_environment: "python_inter_tool_metrics"
     repository:

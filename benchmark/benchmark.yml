@@ -44,7 +44,7 @@ software_environments:
 metric_collectors:
   - id: inter_metrics
     name: "Metrics comparing data with no ground truth to one another"
-    software_environment: "python"
+    software_environment: "python_inter_tool_metrics"
     repository:
       url: https://github.com/lorenzo-22/inter_metrics
       commit: 164c251

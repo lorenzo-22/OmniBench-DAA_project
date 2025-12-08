@@ -115,18 +115,3 @@ stages:
     outputs:
       - id: inter_tool_metrics.scores
         path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"  
-  # - id: inter_metrics
-  #   modules:
-  #     - id: inter_tool_metrics
-  #       name: "Metrics comparing the outcomes of the tools tested"
-  #       software_environment: "python_inter_tool_metrics"
-  #       repository:
-  #         url: "https://github.com/lorenzo-22/inter_metrics"
-  #         commit: 759a341
-  #   # inputs:
-  #   #   - entries:
-  #   #       - results
-  #   outputs:
-  #     - id: inter_tool_metrics.scores
-  #       path: "concordance_scores.csv"
-

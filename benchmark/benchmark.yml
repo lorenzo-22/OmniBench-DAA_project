@@ -41,6 +41,19 @@ software_environments:
     description: "Python environment for intra-tool metrics calculation"
     conda: envs/python_intra_tool_metrics.yml
 
+metric_collectors:
+  - id: inter_metrics
+    name: "Metrics comparing data with no ground truth to one another"
+    software_environment: "python"
+    repository:
+      url: https://github.com/lorenzo-22/inter_metrics
+      commit: 164c251
+    inputs:
+      - input_dir
+    outputs:
+      - id: plotting.html
+        path: "{input}/{name}/plotting_report.html"
+
 stages:
   ## Datasets
   - id: data

@@ -47,7 +47,7 @@ metric_collectors:
     software_environment: "python_inter_tool_metrics"
     repository:
       url: https://github.com/lorenzo-22/inter_metrics
-      commit: 164c251
+      commit: b75ffeb
     outputs:
       - id: plotting.html
         path: "{input}/{name}/plotting_report.html"

@@ -48,12 +48,6 @@ metric_collectors:
     repository:
       url: https://github.com/lorenzo-22/inter_metrics
       commit: 164c251
-    inputs:
-    - id: input_dir
-      name: "Input directory"
-      type: directory
-      required: true
-
     outputs:
       - id: plotting.html
         path: "{input}/{name}/plotting_report.html"

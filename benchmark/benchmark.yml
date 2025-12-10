@@ -62,12 +62,12 @@ stages:
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
           commit: 3623f8f
-    #  - id: semi-synthetic
-    #    name: 'semi_synthetic_data'
-    #    software_environment: "python"
-    #    repository:
-    #      url: "https://github.com/lorenzo-22/semi-synthetic_dataset"
-    #      commit: 8bd83b4
+      - id: semi-synthetic
+        name: 'semi_synthetic_data'
+        software_environment: "python"
+        repository:
+          url: "https://github.com/lorenzo-22/semi-synthetic_dataset"
+          commit: 8bd83b4
       - id: cancer
         name: 'cancer_data'
         software_environment: "python"

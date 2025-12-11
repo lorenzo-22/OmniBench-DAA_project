@@ -41,27 +41,16 @@ software_environments:
     description: "Python environment for intra-tool metrics calculation"
     conda: envs/python_intra_tool_metrics.yml
 
-metric_collectors:
-  - id: inter_tool_metrics
-    name: "Metrics comparing data with no ground truth to one another"
-    software_environment: "python_inter_tool_metrics"
-    repository:
-      url: https://github.com/lorenzo-22/inter_metrics
-      commit: HEAD
-    outputs:
-      - id: plotting.html
-        path: "{input}/{name}/plotting_report.html"
-
 stages:
   ## Datasets
   - id: data
     modules:
-      - id: synthetic
-        name: 'synthetic_data'
-        software_environment: "python"
-        repository:
-          url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: HEAD
+    #  - id: synthetic
+    #    name: 'synthetic_data'
+    #    software_environment: "python"
+    #    repository:
+    #      url: "https://github.com/lorenzo-22/synthetic_dataset"
+    #      commit: HEAD
       - id: semi-synthetic
         name: 'semi_synthetic_data'
         software_environment: "python"
@@ -73,7 +62,7 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/cancer_dataset"
-          commit: HEAD      
+          commit: e0c7f3d      
     outputs:
       - id: data.matrix
         path: "{input}/{stage}/{module}/{params}/{dataset}.dataset.csv"
@@ -81,6 +70,7 @@ stages:
         path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels.csv"
       - id: data.true_labels_proteins
         path: "{input}/{stage}/{module}/{params}/{dataset}.true_labels_proteins.csv"
+  
   ## Methods
   - id: methods
     modules:
@@ -89,19 +79,19 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/JosefineTM/DDA_limma"
-          commit:  HEAD 
+          commit:  423f115  
       - id: welch
         name: "welch_ttest"
         software_environment: "python_welch"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
-          commit: HEAD
+          commit: 4f895ba
       - id: proda
         name: "ProDA"
         software_environment: "r_proda"
         repository:
           url: "https://github.com/JosefineTM/DDA_ProDA.git"
-          commit: HEAD
+          commit: 2eb9a14
     inputs:
       - entries:
           - data.matrix
@@ -118,11 +108,24 @@ stages:
         software_environment: "python_intra_tool_metrics" 
         repository:
           url: "https://github.com/lorenzo-22/intra_metrics"
-          commit: HEAD
+          commit: ac368a0
     inputs:
       - entries:
           - results
           - data.true_labels_proteins
     outputs:
       - id: inter_tool_metrics.scores
-        path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"  
+        path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"
+
+metric_collectors:
+  - id: inter_tool_metrics
+    name: "Metrics comparing data with no ground truth to one another"
+    software_environment: "python_inter_tool_metrics"
+    repository:
+      url: https://github.com/lorenzo-22/inter_metrics
+      commit: 98e6dcc
+    inputs:
+      - results
+    outputs:
+      - id: plotting.html
+        path: "{input}/{name}/plotting_report.html"

@@ -79,19 +79,19 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/JosefineTM/DDA_limma"
-          commit:  423f115  
+          commit:  HEAD  
       - id: welch
         name: "welch_ttest"
         software_environment: "python_welch"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
-          commit: 4f895ba
+          commit: 17cd540
       - id: proda
         name: "ProDA"
         software_environment: "r_proda"
         repository:
           url: "https://github.com/lorenzo-22/DDA_ProDA.git"
-          commit: eb979c2
+          commit: f838500
     inputs:
       - entries:
           - data.matrix
@@ -107,14 +107,14 @@ stages:
         name: "intra_metrics"
         software_environment: "python_intra_tool_metrics" 
         repository:
-          url: "https://github.com/lorenzo-22/intra_metrics"
-          commit: 425f840
+          url: "https://github.com/mlykkegaard/intra_metrics"
+          commit: HEAD
     inputs:
       - entries:
           - results
           - data.true_labels_proteins
     outputs:
-      - id: inter_tool_metrics.scores
+      - id: intra_tool_metrics.scores
         path: "{input}/{stage}/{module}/{params}/{dataset}_metrics.csv"
 
 metric_collectors:
@@ -123,7 +123,7 @@ metric_collectors:
     software_environment: "python_inter_tool_metrics"
     repository:
       url: https://github.com/lorenzo-22/inter_metrics
-      commit: 98e6dcc
+      commit: e0b8b0a
     inputs:
       - results
     outputs:

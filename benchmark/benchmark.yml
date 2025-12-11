@@ -45,12 +45,12 @@ stages:
   ## Datasets
   - id: data
     modules:
-    #  - id: synthetic
-    #    name: 'synthetic_data'
-    #    software_environment: "python"
-    #    repository:
-    #      url: "https://github.com/lorenzo-22/synthetic_dataset"
-    #      commit: HEAD
+      - id: synthetic
+        name: 'synthetic_data'
+        software_environment: "python"
+        repository:
+          url: "https://github.com/lorenzo-22/synthetic_dataset"
+          commit: HEAD
       - id: semi-synthetic
         name: 'semi_synthetic_data'
         software_environment: "python"
@@ -90,8 +90,8 @@ stages:
         name: "ProDA"
         software_environment: "r_proda"
         repository:
-          url: "https://github.com/JosefineTM/DDA_ProDA.git"
-          commit: 2eb9a14
+          url: "https://github.com/lorenzo-22/DDA_ProDA.git"
+          commit: eb979c2
     inputs:
       - entries:
           - data.matrix
@@ -108,7 +108,7 @@ stages:
         software_environment: "python_intra_tool_metrics" 
         repository:
           url: "https://github.com/lorenzo-22/intra_metrics"
-          commit: ac368a0
+          commit: 425f840
     inputs:
       - entries:
           - results

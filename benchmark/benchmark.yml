@@ -47,7 +47,7 @@ metric_collectors:
     software_environment: "python_inter_tool_metrics"
     repository:
       url: https://github.com/lorenzo-22/inter_metrics
-      commit: e4ed0b7
+      commit: HEAD
     outputs:
       - id: plotting.html
         path: "{input}/{name}/plotting_report.html"
@@ -61,19 +61,19 @@ stages:
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/synthetic_dataset"
-          commit: 3623f8f
+          commit: HEAD
       - id: semi-synthetic
         name: 'semi_synthetic_data'
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/semi-synthetic_dataset"
-          commit: 8bd83b4
+          commit: HEAD
       - id: cancer
         name: 'cancer_data'
         software_environment: "python"
         repository:
           url: "https://github.com/lorenzo-22/cancer_dataset"
-          commit: e0c7f3d      
+          commit: HEAD      
     outputs:
       - id: data.matrix
         path: "{input}/{stage}/{module}/{params}/{dataset}.dataset.csv"
@@ -89,19 +89,19 @@ stages:
         software_environment: "r_limma"
         repository:
           url: "https://github.com/JosefineTM/DDA_limma"
-          commit:  423f115  
+          commit:  HEAD 
       - id: welch
         name: "welch_ttest"
         software_environment: "python_welch"
         repository:
           url: "https://github.com/lorenzo-22/welch_t-test"
-          commit: 4f895ba
+          commit: HEAD
       - id: proda
         name: "ProDA"
         software_environment: "r_proda"
         repository:
           url: "https://github.com/JosefineTM/DDA_ProDA.git"
-          commit: 2eb9a14
+          commit: HEAD
     inputs:
       - entries:
           - data.matrix
@@ -118,7 +118,7 @@ stages:
         software_environment: "python_intra_tool_metrics" 
         repository:
           url: "https://github.com/lorenzo-22/intra_metrics"
-          commit: ac368a0
+          commit: HEAD
     inputs:
       - entries:
           - results
